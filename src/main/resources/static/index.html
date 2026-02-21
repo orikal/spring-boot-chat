@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Boot Chat App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<div id="login-page">
+    <h2>Chat Login</h2>
+    <input type="text" id="username-input" placeholder="Username" />
+    <input type="password" id="password-input" placeholder="Password" />
+    <button onclick="handleAuth('login')">Login</button>
+    <button onclick="handleAuth('register')">Sign Up</button>
+</div>
+
+<div id="chat-page" style="display:none;">
+    <div class="chat-header">
+        <h2 id="welcome-msg"></h2>
+        <div class="settings">
+            <label for="bg-color-picker">Chat Color:</label>
+            <input type="color" id="bg-color-picker" value="#f9f9f9" onchange="changeChatColor(this.value)">
+        </div>
+    </div>
+    <ul id="messageArea"></ul>
+    <div class="input-group">
+        <input type="text" id="message" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
