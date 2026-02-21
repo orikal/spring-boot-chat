@@ -22,15 +22,12 @@ public class ChatController {
     // The return value is broadcast to all subscribers of "/topic/public"
     @SendTo("/topic/public")
     public ChatMessage sendMessage(ChatMessage chatMessage) {
-        // 1. Create an entity to save in the database
+        // Create an entity to save in the database
         MessageEntity entity = new MessageEntity();
-        entity.setSender(chatMessage.getSender()); // Ensure the sender name is mapped
+        entity.setSender(chatMessage.getSender());
         entity.setContent(chatMessage.getContent());
 
-        // 2. Save it!
         messageRepository.save(entity);
-
-        // 3. Return the original message to broadcast it to everyone
         return chatMessage;
     }
 

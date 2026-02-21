@@ -5,7 +5,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Step 2: Run stage
-# החלפנו את ה-Base Image לגרסה נתמכת של Amazon Corretto או Eclipse Temurin
 FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar

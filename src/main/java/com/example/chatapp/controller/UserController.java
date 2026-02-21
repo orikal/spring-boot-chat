@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/messages") // Endpoint to fetch chat history
     public List<MessageEntity> getChatHistory() {
-        // Fetches messages from DB ordered by timestamp (Oldest to Newest)
+        // Fetches messages from DB ordered by timestamp
         return messageRepository.findTop50ByOrderByTimestampAsc();
     }
 
