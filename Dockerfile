@@ -5,9 +5,9 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Step 2: Run stage
-FROM openjdk:17-jdk-slim
+# החלפנו את ה-Base Image לגרסה נתמכת של Amazon Corretto או Eclipse Temurin
+FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
-# כאן התיקון - אנחנו מחפשים כל קובץ jar שנוצר בתיקיית target
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
